@@ -1,0 +1,226 @@
+/* main section */
+body > div:nth-child(1) > nav > div.logo-container.d-flex.flex-row.align-items-center > a > img{
+    width: 50%;text-align: right;
+}
+body > div:nth-child(1){
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+}
+@media (min-width: 992px) {
+    body > div:nth-child(1){
+        margin: 0;
+        max-width: 100%;
+        width: 100%;
+        padding: 0;
+    }
+}
+/* main section */
+
+/* header  */
+.nav-link {
+    font-size:17px;
+}
+/* header  */
+
+/* carousel section  */
+
+.buy-now-button {
+    background-color: black;
+    color:white;
+    border-radius:10px;
+    padding:10px 20px;
+}
+.carousel-indicators li{
+    background-color: yellow;
+    padding:2px;
+    border-radius:12px;
+
+}
+.carousel-inner{
+    background: url(../images/bg-1.png)  no-repeat center, url(../images/bg-2.png) left bottom no-repeat;
+    background-size: 50px, 150px, auto;
+    height:500px;
+}
+.col-md-7 {
+    padding:20px;
+    height:100%;
+}
+.col-md-5 {
+    padding:5px;
+    height:100%;
+}
+/* carousel section  */
+
+/* smartphone-section  */
+.smartphone-head  h5{
+    font-weight:600;
+    color:black;
+}
+.smartphone-head p a {
+    color:rgb(224, 186, 12);
+}
+.categories img {
+    width:100px;
+}
+
+.card{
+    border:none;
+    box-shadow:5px 5px 5px rgb(192, 182, 182);
+    border-radius:10px;
+    text-align:center;
+}
+.card-body{
+    display: flex
+    ;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-bottom: -20px;
+}
+.card-text {
+    max-height: 150px;        /* Altura fija */
+    overflow-y: auto;        /* Scroll vertical si supera la altura */
+    position: relative;
+    padding-right: 1rem;     /* Espacio para la barra de scroll */
+    
+    /* Ocultar scroll en Firefox */
+    scrollbar-width: none;
+    /* Ocultar scroll en IE 10+ */
+    -ms-overflow-style: none;
+  }
+  
+  /* Ocultar scroll en WebKit (Chrome, Safari, Edge) */
+  .card-text::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Puntos suspensivos al final de la caja */
+  .card-text::after {
+    content: '...';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: white;       /* Mismo fondo que la card */
+    padding-left: 0.5rem;
+    line-height: 1.2;        /* Ajusta según tu font-size */
+    font-weight: bold;
+  }
+  
+  
+.card-footer {
+    background-color:white;
+    border-top:none;
+}
+.card-title {
+    font-weight:600;
+}
+.card img {
+    height:300px;
+}
+/* smartphone-section  */
+
+/* Categories-section  */
+.categories-heading {
+    font-weight:600;
+    text-align:center;
+}
+.catagoies-section img{
+ margin-bottom:10px;
+ width:150px;
+ border-radius:10px;
+}
+.heading span {
+    height: 5px;
+    width: 100px;
+    display: block;
+    margin: auto;
+    border-radius: 12px;
+    background: #f3a616;
+}
+/* Categories-section  */
+
+/* Filtros del navbar */
+.filter-row {
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-row select.form-control {
+    font-size: 15px;
+    border-radius: 8px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease-in-out;
+    font-weight: 500;
+}
+
+.filter-row select.form-control:focus {
+    border-color: #4a8df0;
+    box-shadow: 0 0 0 3px rgba(74, 141, 240, 0.3);
+    outline: none;
+}
+
+/* Adaptación para mobile */
+@media (max-width: 768px) { 
+    .filter-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-row .col-auto {
+        width: 100%;
+    }
+}
+.navbar-brand, .nav-link {
+    font-weight: 500;
+  }
+
+  .info-card {
+    background-color: #f8f9fa;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+    padding: 1rem 2rem;
+  }
+
+  .info-card i {
+    font-size: 1.3rem;
+    color: #0d6efd;
+  }
+
+  .buy-btn {
+    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+  }
+
+  .text-start{
+    font-size: 1.9rem;
+          font-weight: 900;
+          line-height: 1.1;
+          background: linear-gradient(135deg, #2c74eb 0%, #4a8df0 25%, #6aa6f6 50%, #f84787 75%, #fe3e93 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-fill-color: transparent;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          font-family: inherit;
+    
+  }
+
+  .card-img-top{
+    object-fit: contain;
+  }
+  .row {
+    display: -ms-flexbox;
+    display: flex
+;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    align-items: center;
+    justify-content: center;
+}
