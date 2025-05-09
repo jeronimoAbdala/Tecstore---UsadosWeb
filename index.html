@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hot Gadgets | Ecommerce Websites</title>
-  <link rel="shortcut icon" href="src/images/logo.png" type="src/images/x-icon">
+  <link rel="shortcut icon" href="images/images/logo.png" type="src/images/x-icon">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/index.css">
@@ -15,7 +15,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
       <div class="logo-container d-flex flex-row align-items-center">
         <a class="navbar-brand" href="#">
-          <img src="src/images/logo.png" alt="logo">
+          <img src="images/images/logo.png" alt="logo">
         </a>
         <div class="ms-3 text-start" 
           >
@@ -157,7 +157,7 @@
 
       function createPhoneCard([imei, product, details, price, videoUrl, photoUrl, location, status]) {
         const model = extractModel(product);
-        const imgSrc = `src/images/phone/iphone-${model}.jpg`;
+        const imgSrc = `images/images/phone/iphone-${model}.jpg`;
         const whatsappLink = `https://api.whatsapp.com/send?phone=5491130200515&text=${encodeURIComponent(`Hola, quiero comprar ${product} por ${price}`)}`;
         return `
           <div class="card m-2 shadow-sm" style="width: 18rem;">
