@@ -131,7 +131,7 @@
 
 
       function populateFilters(rows) {
-        const models = getUnique(rows, 1);
+        const models = getUnique(rows, 8);
 
         const statuses  = getUnique(rows, 7);
         const locations = getUnique(rows, 6);
@@ -148,10 +148,16 @@
       }
 
       function filterRows() {
-        const sf = statusFilterEl.value;
-        const lf = locationFilterEl.value;
-        return allRows.filter(r => (!sf || r[7]===sf) && (!lf|| r[6]===lf));
-      }
+  const sf = statusFilterEl.value;
+  const lf = locationFilterEl.value;
+  const mf = modelFilterEl.value;
+
+  return allRows.filter(r =>
+    (!sf || r[7] === sf) &&
+    (!lf || r[6] === lf) &&
+    (!mf || r[8] === mf)
+  );
+}
 
 
 
