@@ -33,26 +33,27 @@
         <ul class="navbar-nav ml-auto">
           <li>
             <div class="container mt-4">
-              <!-- Filtros -->
-              <div class="row filter-row align-items-center mb-3">
-                <div class="col-auto">
-                  <select id="filter-model" class="form-control">
-                    <option value="">Modelo</option>
-                  </select>
-                </div>
-                <div class="col-auto">
-                  <select id="filter-status" class="form-control">
-                    <option value="">Condición</option>
-                  </select>
-                </div>
-                <div class="col-auto">
-                  <select id="filter-location" class="form-control">
-                    <option value="">Ubicación</option>
-                  </select>
-                </div>
-                <div class="col"></div>
-                
-              </div>
+  <!-- Filtros -->
+  <div class="row filter-row align-items-center mb-3 p-3 rounded">
+    <div class="col-auto">
+      <select id="filter-model" class="form-control">
+        <option value="">Todos los modelos</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <select id="filter-status" class="form-control">
+        <option value="">-   - </option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <select id="filter-location" class="form-control">
+        <option value="">Todas las ubicaciones </option>
+      </select>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
+
             </div>
 
           </li>
@@ -79,6 +80,10 @@
   <div id="phones-container" class="container">
     
   </div>
+  <div id="no-results" style="display: none; text-align: center; color: #888; font-weight: 500; margin-top: 2em;">
+  <img src="https://img.icons8.com/ios-filled/100/888888/search--v1.png" alt="No encontrado" style="width: 60px; opacity: 0.6; margin-bottom: 1em;">
+  <div>No se encontró ningún producto</div>
+</div>
 
   <!-- Pagination Bottom -->
   <div class="container">
@@ -164,20 +169,22 @@
       function createPhoneCard([imei, product, details, price, videoUrl, photoUrl, location, status]) {
         const model = extractModel(product);
         const imgSrc = `images/images/phone/iphone-${model}.jpg`;
-        const whatsappLink = `https://api.whatsapp.com/send?phone=5491130200515&text=${encodeURIComponent(`Hola, quiero comprar ${product} por ${price}`)}`;
+        const whatsappLink = `https://api.whatsapp.com/send?phone=5491130200515&text=${encodeURIComponent(`Hola!, quiero comprar ${product} por ${price} | IMEI:${imei} `)}`;
         return `
           <div class="card m-2 shadow-sm" style="width: 18rem;">
             <img src="${imgSrc}" class="card-img-top" alt="${product}">
             <div class="card-body">
               <h5 class="card-title">${product}</h5>
               <p class="card-text">${details||'—'}</p>
-              <h5>${price}</h5>
-              <span class="badge ${status.toLowerCase().includes('outlet')?'badge-warning':'badge-success'}">${status}</span>
+              <h5>${price} USD </h5>
+              
             </div>
             <div class="card-footer d-flex justify-content-between p-2">
               <p class="p"  >📍 ${location}</p>
               <div>
-                ${videoUrl?`<a href="${videoUrl}" target="_blank" class="btn btn-info btn-sm">Ver condición</a>`:''}
+               ${videoUrl?`<button class="btn btn-info btn-sm btn-view-video" data-video-url="${videoUrl}">Ver video</button>`:''}
+
+
                 <a href="${whatsappLink}" target="_blank" class="btn btn-success btn-sm">Comprar</a>
               </div>
               
@@ -235,8 +242,16 @@
 }
 
 
-      function updateDisplay() {
+      function updateDisplay() {    
         const filtered = filterRows();
+
+        const noResultsEl = document.getElementById('no-results');
+        if (filtered.length === 0) {
+          noResultsEl.style.display = 'block';
+        } else {
+          noResultsEl.style.display = 'none';
+        }
+
         renderPage(filtered);
         renderPagination(filtered.length);
       }
@@ -248,6 +263,7 @@
         [modelFilterEl, statusFilterEl, locationFilterEl].forEach(el=> el.addEventListener('change', ()=>{currentPage=1;updateDisplay();}));
         updateDisplay();
       }
+      
       init();
     });
   </script>

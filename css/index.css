@@ -145,6 +145,10 @@ body > div:nth-child(1){
     gap: 10px;
     flex-wrap: wrap;
 }
+.navbar{
+    justify-content: center;
+   
+}
 
 .filter-row select.form-control {
     font-size: 15px;
@@ -223,4 +227,65 @@ body > div:nth-child(1){
     margin-left: -15px;
     align-items: center;
     justify-content: center;
+}
+/* Contenedor de filtros con degradado muy suave de fondo */
+.filter-row {
+  position: relative;
+  background-color: #fff;
+  border-radius: .5rem;
+  overflow: hidden;
+}
+
+/* Pseudo-elemento para poner el degradado de marca con baja opacidad */
+.filter-row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    #2c74eb 0%,
+    #4a8df0 25%,
+    #6aa6f6 50%,
+    #f84787 75%,
+    #fe3e93 100%
+  );
+  opacity: 0.08; /* muy sutil */
+  pointer-events: none;
+}
+
+/* Aseguramos que el contenido quede arriba */
+.filter-row > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Estilos para los selects */
+.filter-row .form-control {
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: .25rem;
+  padding: .4rem .8rem;
+  font-weight: 500;
+  color: #333;
+  transition: border-color .3s, box-shadow .3s;
+}
+
+/* Placeholder gris suave */
+.filter-row .form-control option[value=""] {
+  color: #888;
+}
+
+/* Al recibir foco, resaltamos con color de marca */
+.filter-row .form-control:focus {
+  border-color: #2c74eb;
+  box-shadow: 0 0 0 .2rem rgba(44, 116, 235, 0.25);
+  background-color: #fff;
+}
+
+/* Ajustes responsivos y espaciamiento */
+@media (max-width: 576px) {
+  .filter-row {
+    flex-direction: column;
+    gap: .5rem;
+  }
 }
