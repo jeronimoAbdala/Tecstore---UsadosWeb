@@ -95,6 +95,32 @@
     </div>
   </div>
 
+  <!-- Modal para reproducir vídeo -->
+<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content bg-dark">
+      <div class="modal-header border-0">
+        <h5 class="modal-title text-white" id="videoModalLabel"></h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe 
+            class="embed-responsive-item" 
+            id="videoFrame" 
+            src="" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js" crossorigin="anonymous"></script>
   <script>
@@ -167,32 +193,50 @@
 
 
       function createPhoneCard([imei, product, details, price, videoUrl, photoUrl, location, status]) {
-        const model = extractModel(product);
-        const imgSrc = `images/images/phone/iphone-${model}.jpg`;
-        const whatsappLink = `https://api.whatsapp.com/send?phone=5491130200515&text=${encodeURIComponent(`Hola!, quiero comprar ${product} por ${price} | IMEI:${imei} `)}`;
-        return `
-          <div class="card m-2 shadow-sm" style="width: 18rem;">
-            <img src="${imgSrc}" class="card-img-top" alt="${product}">
-            <div class="card-body">
-              <h5 class="card-title">${product}</h5>
-              <p class="card-text">${details||'—'}</p>
-              <h5>${price} USD </h5>
-              
-            </div>
-            <div class="card-footer d-flex justify-content-between p-2">
-              <p class="p"  >📍 ${location}</p>
-              <div>
-               ${videoUrl?`<button class="btn btn-info btn-sm btn-view-video" data-video-url="${videoUrl}">Ver video</button>`:''}
+  // 1) Extraer modelo para el nombre de la imagen
+  const model  = extractModel(product);
+
+  // 2) Definir imgSrc **antes** de usarlo
+  const imgSrc = `images/images/phone/iphone-${model}.jpg`;
+  
+  // (Opcional: si quieres usar la URL que viene en el CSV, podrías hacer:
+  // const imgSrc = photoUrl || `images/images/phone/iphone-${model}.jpg`; )
+
+  // 3) Link de WhatsApp
+  const whatsappLink = 
+    `https://api.whatsapp.com/send?phone=5491130200515&text=${encodeURIComponent(
+      `Hola!, quiero comprar ${product} por ${price} | IMEI:${imei}`
+    )}`;
+
+  // 4) Ahora uso imgSrc sin problemas
+  return `
+     <div class="card m-2 shadow-sm" style="width: 18rem;">
+      <img src="${imgSrc}" class="card-img-top" alt="${product}">
+      <div class="card-body">
+        <h5 class="card-title">${product}</h5>
+        <p class="card-text">${details||'—'}</p>
+        <h5>${price} USD</h5>
+      </div>
+      <div class="card-footer d-flex justify-content-between p-2">
+        <p>📍 ${location}</p>
+        <div>
+          ${
+            videoUrl
+              ? `<button 
+                   class="btn btn-info btn-sm btn-view-video" 
+                   data-video-url="${videoUrl}">
+                   Ver video
+                 </button>`
+              : ''
+          }
+          <a href="${whatsappLink}" target="_blank" class="btn btn-success btn-sm">Comprar</a>
+        </div>
+      </div>
+    </div>
+  `;
+}
 
 
-                <a href="${whatsappLink}" target="_blank" class="btn btn-success btn-sm">Comprar</a>
-              </div>
-              
-              
-            </div>
-          </div>
-        `;
-      }
 
       function getPageNumbers(totalPages) {
         const pages = [];
@@ -263,6 +307,8 @@
         [modelFilterEl, statusFilterEl, locationFilterEl].forEach(el=> el.addEventListener('change', ()=>{currentPage=1;updateDisplay();}));
         updateDisplay();
       }
+
+
       
       init();
     });
@@ -272,5 +318,28 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function() {
+      // Cuando clickean en “Ver video”:
+      $('body').on('click', '.btn-view-video', function() {
+        const url = $(this).data('video-url');
+        const match = url.match(/\/d\/([^\/]+)\//);
+        if (!match) return alert('URL de Drive inválida');
+        const fileId = match[1];
+        // Usamos /preview para evitar aviso de virus
+        const embedUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+
+        // Cargamos el iframe y abrimos modal
+        $('#videoFrame').attr('src', embedUrl);
+        $('#videoModalLabel').text('Vídeo');
+        $('#videoModal').modal('show');
+      });
+
+      // Al cerrar el modal, limpiamos el src para detener la reproducción
+      $('#videoModal').on('hidden.bs.modal', function () {
+        $('#videoFrame').attr('src', '');
+      });
+    });
+  </script>
 </body>
 </html>
