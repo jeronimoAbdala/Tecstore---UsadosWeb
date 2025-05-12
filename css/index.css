@@ -173,7 +173,20 @@ body > div:nth-child(1){
     box-shadow: 0 0 0 3px rgba(74, 141, 240, 0.3);
     outline: none;
 }
+body > div:nth-child(1) > nav > div.logo-container.d-flex.flex-row.align-items-center{
+  top:20px;
+}
+body > div:nth-child(1) > nav > button{
+      top: 20px;
+    padding-bottom: 13px;
+}
 
+
+#phones-container div div{
+  display: flex
+;
+    justify-content: center;
+}
 /* Adaptación para mobile */
 @media (max-width: 768px) { 
     .filter-row {
@@ -356,3 +369,4 @@ body > div:nth-child(1){
       transform: translateX(-50%);
     }
   }
+
