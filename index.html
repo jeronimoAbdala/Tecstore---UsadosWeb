@@ -1,29 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hot Gadgets | Ecommerce Websites</title>
   <link rel="shortcut icon" href="images/images/logo.png" type="src/images/x-icon">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/index.css">
 </head>
+
 <body>
+
   <!-- Header -->
-  <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <div class="container ">
+    <div class="banner-scroll">
+      <div class="banner-track">
+        <div class="banner-content">
+          🚛✨ Envíos gratis a todo el país 💗📦 🚛✨ Envíos gratis a todo el país 💗📦 🚛✨ Envíos gratis a todo el país
+          💗📦 🚛✨ Envíos gratis a todo el país 💗📦
+        </div>
+        <div class="banner-content">
+          🚛✨ Envíos gratis a todo el país 💗📦 🚛✨ Envíos gratis a todo el país 💗📦 🚛✨ Envíos gratis a todo el país
+          💗📦 🚛✨ Envíos gratis a todo el país 💗📦
+        </div>
+      </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light row filter-row align-items-center mb-3 p-3 rounded">
       <div class="logo-container d-flex flex-row align-items-center">
         <a class="navbar-brand" href="#">
           <img src="images/images/logo.png" alt="logo">
         </a>
-        <div class="ms-3 text-start" 
-          >
+        <div class="ms-3 text-start">
           Iphones <br> Seminuevos
         </div>
       </div>
-      
-      
+
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -33,93 +48,92 @@
         <ul class="navbar-nav ml-auto">
           <li>
             <div class="container mt-4">
-  <!-- Filtros -->
-  <div class="row filter-row align-items-center mb-3 p-3 rounded">
-    <div class="col-auto">
-      <select id="filter-model" class="form-control">
-        <option value="">Todos los modelos</option>
-      </select>
-    </div>
-    <div class="col-auto">
-      <select id="filter-status" class="form-control">
-        <option value="">Semi-Nuevos </option>
-      </select>
-    </div>
-    <div class="col-auto">
-      <select id="filter-location" class="form-control">
-        <option value="">Todas las ubicaciones </option>
-      </select>
-    </div>
-    <div class="col"></div>
-  </div>
-</div>
-
+              <!-- Filtros -->
+              <div class="navbar navbar-expand-lg navbar-light row filter-row align-items-center mb-3 p-3 rounded">
+                <div class="col-auto">
+                  <select id="filter-model" class="form-control">
+                    <option value="">Todos los modelos</option>
+                  </select>
+                </div>
+                <div class="col-auto">
+                  <select id="filter-status" class="form-control">
+                    <option value="">Semi-Nuevos </option>
+                  </select>
+                </div>
+                <div class="col-auto">
+                  <select id="filter-location" class="form-control">
+                    <option value="">Todas las ubicaciones </option>
+                  </select>
+                </div>
+                <div class="col"></div>
+              </div>
             </div>
 
-          </li>
-          
-      
-        </ul>
       </div>
-    </nav>
+
+      </li>
+
+
+      </ul>
+  </div>
+  </nav>
   </div>
 
-<nav aria-label="Paginación superior">
-  <ul id="pagination-top" class="pagination justify-content-start">
-    <!-- JS inyecta aquí los <li> -->
-  </ul>
-</nav>
+  <nav aria-label="Paginación superior">
+    <ul id="pagination-top" class="pagination justify-content-start ml-4 mr-4">
+      <!-- JS inyecta aquí los <li> -->
+    </ul>
+  </nav>
 
 
-  
-  
-  
+
+
+
   <!-- Contenedor de tarjetas -->
   <div id="phones-container" class="container">
-    
+
   </div>
   <div id="no-results" style="display: none; text-align: center; color: #888; font-weight: 500; margin-top: 2em;">
-  <img src="https://img.icons8.com/ios-filled/100/888888/search--v1.png" alt="No encontrado" style="width: 60px; opacity: 0.6; margin-bottom: 1em;">
-  <div>No se encontró ningún producto</div>
-</div>
+    <img src="https://img.icons8.com/ios-filled/100/888888/search--v1.png" alt="No encontrado"
+      style="width: 60px; opacity: 0.6; margin-bottom: 1em;">
+    <div>No se encontró ningún producto</div>
+  </div>
 
   <!-- Pagination Bottom -->
   <!-- Pagination Bottom -->
-<nav aria-label="Paginación inferior">
-  <ul id="pagination-bottom" class="pagination justify-content-end">
-    <!-- JS inyecta aquí los <li> -->
-  </ul>
-</nav>
+  <nav aria-label="Paginación inferior">
+    <ul id="pagination-bottom" class="pagination justify-content-end ml-4 mr-4">
+      <!-- JS inyecta aquí los <li> -->
+    </ul>
+  </nav>
 
 
   <!-- Modal para reproducir vídeo -->
-<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content bg-dark">
-      <div class="modal-header border-0">
-        <h5 class="modal-title text-white" id="videoModalLabel"></h5>
-        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Cerrar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body p-0">
-        <div class="embed-responsive embed-responsive-16by9">
-          <iframe 
-            class="embed-responsive-item" 
-            id="videoFrame" 
-            src="" 
-            allow="autoplay; encrypted-media" 
-            allowfullscreen>
-          </iframe>
+  <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content bg-dark">
+        <div class="modal-header border-0">
+          <h5 class="modal-title text-white" id="videoModalLabel"></h5>
+          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Cerrar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" id="videoFrame" src="" allow="autoplay; encrypted-media"
+              allowfullscreen>
+            </iframe>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
 
   <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"
+    crossorigin="anonymous"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS3F_ZeeiEITNOH0p2atY9TukSLai4ZXEVINAg-1BdeDvysNioipA69PIygoIcGsPbGOxWPB_e6xAyK/pub?gid=703462116&single=true&output=csv';
@@ -127,21 +141,21 @@
       let allRows = [];
       let currentPage = 1;
 
-      const modelFilterEl    = document.getElementById('filter-model');
-      const statusFilterEl   = document.getElementById('filter-status');
+      const modelFilterEl = document.getElementById('filter-model');
+      const statusFilterEl = document.getElementById('filter-status');
       const locationFilterEl = document.getElementById('filter-location');
-      const paginationTop    = document.getElementById('pagination-top');
+      const paginationTop = document.getElementById('pagination-top');
       const paginationBottom = document.getElementById('pagination-bottom');
-      const container        = document.getElementById('phones-container');
+      const container = document.getElementById('phones-container');
 
       async function fetchSheetValues() {
-    const res = await fetch(CSV_URL);
-    const text = await res.text();
-    const rows = Papa.parse(text.trim(), { skipEmptyLines: true }).data;
+        const res = await fetch(CSV_URL);
+        const text = await res.text();
+        const rows = Papa.parse(text.trim(), { skipEmptyLines: true }).data;
 
-    // Filtrar filas donde el nombre del producto (por ejemplo, r[1]) esté vacío o nulo
-    return rows.filter(row => row[1] && row[1].trim() !== ''); // Filtra si el campo de producto está vacío
-}
+        // Filtrar filas donde el nombre del producto (por ejemplo, r[1]) esté vacío o nulo
+        return rows.filter(row => row[1] && row[1].trim() !== ''); // Filtra si el campo de producto está vacío
+      }
 
 
       function getUnique(arr, idx) {
@@ -149,204 +163,203 @@
       }
 
       // Extrae modelo-numero en formato "12-64" desde "12 64gb ..."
-    function extractModel(product) {
-      const parts = product.split(' ');
-      const modelNum = parts[0] || '';
-      const gbMatch = parts[1] ? parts[1].match(/(\d+)/) : null;
-      const gbNum = gbMatch ? gbMatch[1] : '';
-      return modelNum && gbNum ? `${modelNum}-${gbNum}` : modelNum;
-    }
+      function extractModel(product) {
+        const parts = product.split(' ');
+        const modelNum = parts[0] || '';
+        const gbMatch = parts[1] ? parts[1].match(/(\d+)/) : null;
+        const gbNum = gbMatch ? gbMatch[1] : '';
+        return modelNum && gbNum ? `${modelNum}-${gbNum}` : modelNum;
+      }
 
 
-   function populateFilters(rows) {
-  const models    = getUnique(rows, 8);
-  const statuses  = getUnique(rows, 7);
-  const locations = getUnique(rows, 6);
+      function populateFilters(rows) {
+        const models = getUnique(rows, 8);
+        const statuses = getUnique(rows, 7);
+        const locations = getUnique(rows, 6);
 
-  // Limpiar filtros previos (IMPORTANTE)
-  modelFilterEl.innerHTML = '<option value="">Todos los modelos</option>';
-  statusFilterEl.innerHTML = '<option value="">Semi-Nuevos</option>';
-  locationFilterEl.innerHTML = '<option value="">Todas las ubicaciones</option>';
+        // Limpiar filtros previos (IMPORTANTE)
+        modelFilterEl.innerHTML = '<option value="">Todos los modelos</option>';
+        statusFilterEl.innerHTML = '<option value="">Semi-Nuevos</option>';
+        locationFilterEl.innerHTML = '<option value="">Todas las ubicaciones</option>';
 
-  models.sort().forEach(m => {
-    const opt = document.createElement('option');
-    opt.value = m;
-    opt.textContent = m;
-    modelFilterEl.appendChild(opt);
-  });
+        models.sort().forEach(m => {
+          const opt = document.createElement('option');
+          opt.value = m;
+          opt.textContent = m;
+          modelFilterEl.appendChild(opt);
+        });
 
-  statuses.forEach(s => {
-    const o = document.createElement('option');
-    o.value = s;
-    o.textContent = s;
-    if (s === 'Semi-Nuevo') o.selected = true;
-    statusFilterEl.appendChild(o);
-  });
+        statuses.forEach(s => {
+          const o = document.createElement('option');
+          o.value = s;
+          o.textContent = s;
+          if (s === 'Semi-Nuevo') o.selected = true;
+          statusFilterEl.appendChild(o);
+        });
 
-  locations.forEach(l => {
-    const o = document.createElement('option');
-    o.value = l;
-    o.textContent = l;
-    locationFilterEl.appendChild(o);
-  });
-}
+        locations.forEach(l => {
+          const o = document.createElement('option');
+          o.value = l;
+          o.textContent = l;
+          locationFilterEl.appendChild(o);
+        });
+      }
 
 
 
       function filterRows() {
-  const sf = statusFilterEl.value;
-  const lf = locationFilterEl.value;
-  const mf = modelFilterEl.value;
+        const sf = statusFilterEl.value;
+        const lf = locationFilterEl.value;
+        const mf = modelFilterEl.value;
 
-  return allRows.filter(r =>
-    (!sf || r[7] === sf) &&
-    (!lf || r[6] === lf) &&
-    (!mf || r[8] === mf)
-  );
-}
+        return allRows.filter(r =>
+          (!sf || r[7] === sf) &&
+          (!lf || r[6] === lf) &&
+          (!mf || r[8] === mf)
+        );
+      }
 
 
 
       function createPhoneCard([imei, product, details, price, videoUrl, photoUrl, location, status]) {
-  // 1) Extraer modelo para el nombre de la imagen
-  const model  = extractModel(product);
+        // 1) Extraer modelo para el nombre de la imagen
+        const model = extractModel(product);
 
-  // 2) Definir imgSrc **antes** de usarlo
-  const imgSrc = `images/images/phone/iphone-${model}.jpg`;
-  
-  // (Opcional: si quieres usar la URL que viene en el CSV, podrías hacer:
-  // const imgSrc = photoUrl || `images/images/phone/iphone-${model}.jpg`; )
+        // 2) Definir imgSrc **antes** de usarlo
+        const imgSrc = `images/images/phone/iphone-${model}.jpg`;
 
-  // 3) Link de WhatsApp
-  const whatsappLink = 
-    `https://api.whatsapp.com/send?phone=5491130200515&text=${encodeURIComponent(
-      `Hola!, quiero comprar ${product} por ${price} | IMEI:${imei}`
-    )}`;
+        // (Opcional: si quieres usar la URL que viene en el CSV, podrías hacer:
+        // const imgSrc = photoUrl || `images/images/phone/iphone-${model}.jpg`; )
 
-  // 4) Ahora uso imgSrc sin problemas
-  return `
+        // 3) Link de WhatsApp
+        const whatsappLink =
+          `https://api.whatsapp.com/send?phone=5491130200515&text=${encodeURIComponent(
+            `Hola!, quiero comprar ${product} por ${price} | IMEI:${imei}`
+          )}`;
+
+        // 4) Ahora uso imgSrc sin problemas
+        return `
      <div class="card m-2 shadow-sm" style="width: 18rem;">
       <img src="${imgSrc}" class="card-img-top" alt="${product}">
       <div class="card-body">
         <h5 class="card-title">${product}</h5>
-        <p class="card-text">${details||'—'}</p>
+        <p class="card-text">${details || '—'}</p>
         <h5>${price} USD</h5>
       </div>
       <div class="card-footer d-flex justify-content-between p-2">
         <p>📍 ${location}</p>
         <div>
-          ${
-            videoUrl
-              ? `<button 
+          ${videoUrl
+            ? `<button 
                    class="btn btn-info btn-sm btn-view-video" 
                    data-video-url="${videoUrl}">
                    Ver video
                  </button>`
-              : ''
+            : ''
           }
           <a href="${whatsappLink}" target="_blank" class="btn btn-success btn-sm">Comprar</a>
         </div>
       </div>
     </div>
   `;
-}
+      }
 
 
 
       // 1) Genera un array de páginas con “…” si es muy largo
-function getPageNumbers(totalPages) {
-  const pages = [];
-  if (totalPages <= 5) {
-    for (let i = 1; i <= totalPages; i++) pages.push(i);
-  } else {
-    pages.push(1);
-    if (currentPage > 3) pages.push('...');
-    for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
-      pages.push(i);
-    }
-    if (currentPage < totalPages - 2) pages.push('...');
-    pages.push(totalPages);
-  }
-  return pages;
-}
-// 2) Renderiza sólo las tarjetas de la página actual
-function renderPhones(rows) {
-  const start = (currentPage - 1) * ITEMS_PER_PAGE;
-  const pageRows = rows.slice(start, start + ITEMS_PER_PAGE);
+      function getPageNumbers(totalPages) {
+        const pages = [];
+        if (totalPages <= 5) {
+          for (let i = 1; i <= totalPages; i++) pages.push(i);
+        } else {
+          pages.push(1);
+          if (currentPage > 3) pages.push('...');
+          for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
+            pages.push(i);
+          }
+          if (currentPage < totalPages - 2) pages.push('...');
+          pages.push(totalPages);
+        }
+        return pages;
+      }
+      // 2) Renderiza sólo las tarjetas de la página actual
+      function renderPhones(rows) {
+        const start = (currentPage - 1) * ITEMS_PER_PAGE;
+        const pageRows = rows.slice(start, start + ITEMS_PER_PAGE);
 
-  container.innerHTML = '';  // limpio todo
+        container.innerHTML = '';  // limpio todo
 
-  // Recorro de 3 en 3 y envuelvo en <div class="row">
-  for (let i = 0; i < pageRows.length; i += 3) {
-    const chunk = pageRows.slice(i, i + 3);
-    // Creo una fila
-    const row = document.createElement('div');
-    row.className = 'row mb-4';
+        // Recorro de 3 en 3 y envuelvo en <div class="row">
+        for (let i = 0; i < pageRows.length; i += 3) {
+          const chunk = pageRows.slice(i, i + 3);
+          // Creo una fila
+          const row = document.createElement('div');
+          row.className = 'row mb-4';
 
-    chunk.forEach(item => {
-      // Creo el contenedor de columna
-      const col = document.createElement('div');
-      col.className = 'col-12 col-md-4';  // 1 column en móvil, 3 en md+
-      col.innerHTML = createPhoneCard(item);
-      row.appendChild(col);
-    });
+          chunk.forEach(item => {
+            // Creo el contenedor de columna
+            const col = document.createElement('div');
+            col.className = 'col-12 col-md-4';  // 1 column en móvil, 3 en md+
+            col.innerHTML = createPhoneCard(item);
+            row.appendChild(col);
+          });
 
-    container.appendChild(row);
-  }
+          container.appendChild(row);
+        }
 
-  // No-results
-  document.getElementById('no-results').style.display = rows.length === 0 ? 'block' : 'none';
-}
+        // No-results
+        document.getElementById('no-results').style.display = rows.length === 0 ? 'block' : 'none';
+      }
 
 
-  function renderPagination(rows) {
-  const totalPages = Math.ceil(rows.length / ITEMS_PER_PAGE);
-  const pages = getPageNumbers(totalPages);
-  [paginationTop, paginationBottom].forEach(ul => {
-    ul.innerHTML = '';
-    pages.forEach(n => {
-      const li = document.createElement('li');
-      li.className = 'page-item' +
-        (n === currentPage ? ' active' : '') +
-        (n === '...' ? ' disabled' : '');
-      const a = document.createElement('a');
-      a.className = 'page-link';
-      a.href = '#';
-      a.textContent = n;
-      if (n !== '...') {
-        a.addEventListener('click', e => {
-          e.preventDefault();
-          currentPage = n;
-          update();
+      function renderPagination(rows) {
+        const totalPages = Math.ceil(rows.length / ITEMS_PER_PAGE);
+        const pages = getPageNumbers(totalPages);
+        [paginationTop, paginationBottom].forEach(ul => {
+          ul.innerHTML = '';
+          pages.forEach(n => {
+            const li = document.createElement('li');
+            li.className = 'page-item' +
+              (n === currentPage ? ' active' : '') +
+              (n === '...' ? ' disabled' : '');
+            const a = document.createElement('a');
+            a.className = 'page-link';
+            a.href = '#';
+            a.textContent = n;
+            if (n !== '...') {
+              a.addEventListener('click', e => {
+                e.preventDefault();
+                currentPage = n;
+                update();
+              });
+            }
+            li.appendChild(a);
+            ul.appendChild(li);
+          });
         });
       }
-      li.appendChild(a);
-      ul.appendChild(li);
-    });
-  });
-}
 
       function renderPage(rows) {
-      container.innerHTML = '';
-      const start = (currentPage - 1) * ITEMS_PER_PAGE;
-      const pageRows = rows.slice(start, start + ITEMS_PER_PAGE);
-      // Agrupar de a 3 para desktop/tablet, en mobile se mostrará col-12 (1 card)
-      for (let i = 0; i < pageRows.length; i += 3) {
-        const group = pageRows.slice(i, i + 3);
-        // Crear una fila con hasta 3 columnas
-        const rowHtml = group
-          .map(r => createPhoneCard(r))
-          .join('');
-        container.insertAdjacentHTML('beforeend', `<div class="row mb-4">${rowHtml}</div>`);
+        container.innerHTML = '';
+        const start = (currentPage - 1) * ITEMS_PER_PAGE;
+        const pageRows = rows.slice(start, start + ITEMS_PER_PAGE);
+        // Agrupar de a 3 para desktop/tablet, en mobile se mostrará col-12 (1 card)
+        for (let i = 0; i < pageRows.length; i += 3) {
+          const group = pageRows.slice(i, i + 3);
+          // Crear una fila con hasta 3 columnas
+          const rowHtml = group
+            .map(r => createPhoneCard(r))
+            .join('');
+          container.insertAdjacentHTML('beforeend', `<div class="row mb-4">${rowHtml}</div>`);
+        }
       }
-    }
-    function update() {
-    const filtered = filterRows();
-    renderPhones(filtered);
-    renderPagination(filtered);
-}
+      function update() {
+        const filtered = filterRows();
+        renderPhones(filtered);
+        renderPagination(filtered);
+      }
 
-      function updateDisplay() {    
+      function updateDisplay() {
         const filtered = filterRows();
 
         const noResultsEl = document.getElementById('no-results');
@@ -360,17 +373,17 @@ function renderPhones(rows) {
         renderPagination(filtered.length);
       }
 
-     // 5) Conectar al iniciar y a los filtros
-async function init() {
-  allRows = (await fetchSheetValues()).slice(1);
-  populateFilters(allRows);
-  [modelFilterEl, statusFilterEl, locationFilterEl].forEach(el =>
-    el.addEventListener('change', () => { currentPage = 1; update(); })
-  );
-  update();
-}
+      // 5) Conectar al iniciar y a los filtros
+      async function init() {
+        allRows = (await fetchSheetValues()).slice(1);
+        populateFilters(allRows);
+        [modelFilterEl, statusFilterEl, locationFilterEl].forEach(el =>
+          el.addEventListener('change', () => { currentPage = 1; update(); })
+        );
+        update();
+      }
 
-init();
+      init();
     });
   </script>
 
@@ -379,9 +392,9 @@ init();
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
   <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
       // Cuando clickean en “Ver video”:
-      $('body').on('click', '.btn-view-video', function() {
+      $('body').on('click', '.btn-view-video', function () {
         const url = $(this).data('video-url');
         const match = url.match(/\/d\/([^\/]+)\//);
         if (!match) return alert('URL de Drive inválida');
@@ -402,4 +415,5 @@ init();
     });
   </script>
 </body>
+
 </html>

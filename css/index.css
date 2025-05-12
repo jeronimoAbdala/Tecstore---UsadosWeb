@@ -320,3 +320,39 @@ body > div:nth-child(1){
 .pagination .page-item:last-child .page-link {
   padding: 0.5rem 1rem;
 }
+
+ .banner-scroll {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fe3e93;
+    color: white;
+    overflow: hidden;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    font-family: sans-serif;
+    font-size: 15px;
+    z-index: 9999; /* Asegura que quede encima de todo */
+  }
+
+  .banner-track {
+    display: flex;
+    width: max-content;
+    animation: scroll-left 20s linear infinite;
+  }
+
+  .banner-content {
+    white-space: nowrap;
+    padding-right: 50px;
+  }
+
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
