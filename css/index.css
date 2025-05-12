@@ -369,4 +369,11 @@ body > div:nth-child(1) > nav > button{
       transform: translateX(-50%);
     }
   }
+  #videoFrame {
+  width: 100%;
+  height: 56.25vw; /* Esto mantiene proporción 16:9 */
+  max-height: 90vh;
+  border: none;
+}
+
 
