@@ -42,7 +42,7 @@
     </div>
     <div class="col-auto">
       <select id="filter-status" class="form-control">
-        <option value="">-   - </option>
+        <option value="">Semi-Nuevos </option>
       </select>
     </div>
     <div class="col-auto">
@@ -64,14 +64,12 @@
     </nav>
   </div>
 
-  <!-- <div class="container">
-    <div class="row">
-      <div class="col"></div>
-      <div class="col-auto">
-        <nav><ul id="pagination-top" class="pagination"><li class="page-item active"><a class="page-link" href="#">1</a></li><li class="page-item"><a class="page-link" href="#">2</a></li><li class="page-item"><a class="page-link" href="#">3</a></li></ul></nav>
-      </div>
-    </div>
-  </div> -->
+<nav aria-label="Paginación superior">
+  <ul id="pagination-top" class="pagination justify-content-start">
+    <!-- JS inyecta aquí los <li> -->
+  </ul>
+</nav>
+
 
   
   
@@ -86,14 +84,13 @@
 </div>
 
   <!-- Pagination Bottom -->
-  <div class="container">
-    <div class="row">
-      <div class="col"></div>
-      <div class="col-auto">
-        <nav><ul id="pagination-bottom" class="pagination"></ul></nav>
-      </div>
-    </div>
-  </div>
+  <!-- Pagination Bottom -->
+<nav aria-label="Paginación inferior">
+  <ul id="pagination-bottom" class="pagination justify-content-end">
+    <!-- JS inyecta aquí los <li> -->
+  </ul>
+</nav>
+
 
   <!-- Modal para reproducir vídeo -->
 <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
@@ -161,22 +158,40 @@
     }
 
 
-      function populateFilters(rows) {
-        const models = getUnique(rows, 8);
+   function populateFilters(rows) {
+  const models    = getUnique(rows, 8);
+  const statuses  = getUnique(rows, 7);
+  const locations = getUnique(rows, 6);
 
-        const statuses  = getUnique(rows, 7);
-        const locations = getUnique(rows, 6);
+  // Limpiar filtros previos (IMPORTANTE)
+  modelFilterEl.innerHTML = '<option value="">Todos los modelos</option>';
+  statusFilterEl.innerHTML = '<option value="">Semi-Nuevos</option>';
+  locationFilterEl.innerHTML = '<option value="">Todas las ubicaciones</option>';
 
-        models.sort().forEach(m => {
-        const opt = document.createElement('option'); 
-        opt.value = m; 
-        opt.textContent = m;
-        modelFilterEl.appendChild(opt);
-      });
+  models.sort().forEach(m => {
+    const opt = document.createElement('option');
+    opt.value = m;
+    opt.textContent = m;
+    modelFilterEl.appendChild(opt);
+  });
 
-        statuses.forEach(s => { const o = document.createElement('option'); o.value = s; o.textContent = s; statusFilterEl.appendChild(o); });
-        locations.forEach(l=> { const o = document.createElement('option'); o.value = l; o.textContent = l; locationFilterEl.appendChild(o); });
-      }
+  statuses.forEach(s => {
+    const o = document.createElement('option');
+    o.value = s;
+    o.textContent = s;
+    if (s === 'Semi-Nuevo') o.selected = true;
+    statusFilterEl.appendChild(o);
+  });
+
+  locations.forEach(l => {
+    const o = document.createElement('option');
+    o.value = l;
+    o.textContent = l;
+    locationFilterEl.appendChild(o);
+  });
+}
+
+
 
       function filterRows() {
   const sf = statusFilterEl.value;
@@ -238,53 +253,98 @@
 
 
 
-      function getPageNumbers(totalPages) {
-        const pages = [];
-        if (totalPages <= 5) {
-          for (let i=1;i<=totalPages;i++) pages.push(i);
-        } else {
-          pages.push(1);
-          if (currentPage > 3) pages.push('...');
-          for (let i = currentPage-1; i<=currentPage+1; i++) {
-            if (i>1 && i<totalPages) pages.push(i);
-          }
-          if (currentPage < totalPages-2) pages.push('...');
-          pages.push(totalPages);
-        }
-        return pages;
-      }
-
-      function renderPagination(totalItems) {
-        [paginationTop, paginationBottom].forEach(pagEl=> pagEl.innerHTML='');
-        const totalPages = Math.ceil(totalItems/ITEMS_PER_PAGE);
-        const nums = getPageNumbers(totalPages);
-        nums.forEach(n=>{
-          const li = document.createElement('li');
-          li.className = 'page-item'+(n===currentPage?' active':'')+(n==='...'?' disabled':'');
-          const a = document.createElement('a');
-          a.className = 'page-link'; a.href = '#'; a.textContent = n;
-          if (n!=='...') a.addEventListener('click',e=>{e.preventDefault(); currentPage=n; updateDisplay();});
-          li.appendChild(a);
-          paginationTop.appendChild(li.cloneNode(true));
-          paginationBottom.appendChild(li);
-        });
-      }
-
-      function renderPage(rows) {
-  container.innerHTML = '';
+      // 1) Genera un array de páginas con “…” si es muy largo
+function getPageNumbers(totalPages) {
+  const pages = [];
+  if (totalPages <= 5) {
+    for (let i = 1; i <= totalPages; i++) pages.push(i);
+  } else {
+    pages.push(1);
+    if (currentPage > 3) pages.push('...');
+    for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
+      pages.push(i);
+    }
+    if (currentPage < totalPages - 2) pages.push('...');
+    pages.push(totalPages);
+  }
+  return pages;
+}
+// 2) Renderiza sólo las tarjetas de la página actual
+function renderPhones(rows) {
   const start = (currentPage - 1) * ITEMS_PER_PAGE;
   const pageRows = rows.slice(start, start + ITEMS_PER_PAGE);
-  // Agrupar de a 3 para desktop/tablet, en mobile se mostrará col-12 (1 card)
+
+  container.innerHTML = '';  // limpio todo
+
+  // Recorro de 3 en 3 y envuelvo en <div class="row">
   for (let i = 0; i < pageRows.length; i += 3) {
-    const group = pageRows.slice(i, i + 3);
-    // Crear una fila con hasta 3 columnas
-    const rowHtml = group
-      .map(r => createPhoneCard(r))
-      .join('');
-    container.insertAdjacentHTML('beforeend', `<div class="row mb-4">${rowHtml}</div>`);
+    const chunk = pageRows.slice(i, i + 3);
+    // Creo una fila
+    const row = document.createElement('div');
+    row.className = 'row mb-4';
+
+    chunk.forEach(item => {
+      // Creo el contenedor de columna
+      const col = document.createElement('div');
+      col.className = 'col-12 col-md-4';  // 1 column en móvil, 3 en md+
+      col.innerHTML = createPhoneCard(item);
+      row.appendChild(col);
+    });
+
+    container.appendChild(row);
   }
+
+  // No-results
+  document.getElementById('no-results').style.display = rows.length === 0 ? 'block' : 'none';
 }
 
+
+  function renderPagination(rows) {
+  const totalPages = Math.ceil(rows.length / ITEMS_PER_PAGE);
+  const pages = getPageNumbers(totalPages);
+  [paginationTop, paginationBottom].forEach(ul => {
+    ul.innerHTML = '';
+    pages.forEach(n => {
+      const li = document.createElement('li');
+      li.className = 'page-item' +
+        (n === currentPage ? ' active' : '') +
+        (n === '...' ? ' disabled' : '');
+      const a = document.createElement('a');
+      a.className = 'page-link';
+      a.href = '#';
+      a.textContent = n;
+      if (n !== '...') {
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          currentPage = n;
+          update();
+        });
+      }
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+  });
+}
+
+      function renderPage(rows) {
+      container.innerHTML = '';
+      const start = (currentPage - 1) * ITEMS_PER_PAGE;
+      const pageRows = rows.slice(start, start + ITEMS_PER_PAGE);
+      // Agrupar de a 3 para desktop/tablet, en mobile se mostrará col-12 (1 card)
+      for (let i = 0; i < pageRows.length; i += 3) {
+        const group = pageRows.slice(i, i + 3);
+        // Crear una fila con hasta 3 columnas
+        const rowHtml = group
+          .map(r => createPhoneCard(r))
+          .join('');
+        container.insertAdjacentHTML('beforeend', `<div class="row mb-4">${rowHtml}</div>`);
+      }
+    }
+    function update() {
+    const filtered = filterRows();
+    renderPhones(filtered);
+    renderPagination(filtered);
+}
 
       function updateDisplay() {    
         const filtered = filterRows();
@@ -300,17 +360,17 @@
         renderPagination(filtered.length);
       }
 
-      async function init() {
-        const data = await fetchSheetValues();
-        allRows = data.slice(1);
-        populateFilters(allRows);
-        [modelFilterEl, statusFilterEl, locationFilterEl].forEach(el=> el.addEventListener('change', ()=>{currentPage=1;updateDisplay();}));
-        updateDisplay();
-      }
+     // 5) Conectar al iniciar y a los filtros
+async function init() {
+  allRows = (await fetchSheetValues()).slice(1);
+  populateFilters(allRows);
+  [modelFilterEl, statusFilterEl, locationFilterEl].forEach(el =>
+    el.addEventListener('change', () => { currentPage = 1; update(); })
+  );
+  update();
+}
 
-
-      
-      init();
+init();
     });
   </script>
 
