@@ -377,3 +377,12 @@ body > div:nth-child(1) > nav > button{
 }
 
 
+.btn{
+  align-content: center;
+}
+.card-footer p{
+      margin: 7px;
+}
+.card-footer div{
+  gap: 3px;
+}
