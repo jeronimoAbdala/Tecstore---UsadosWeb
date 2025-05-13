@@ -166,12 +166,14 @@
 
       // Extrae modelo-numero en formato "12-64" desde "12 64gb ..."
       function extractModel(product) {
-        const parts = product.split(' ');
-        const modelNum = parts[0] || '';
-        const gbMatch = parts[1] ? parts[1].match(/(\d+)/) : null;
-        const gbNum = gbMatch ? gbMatch[1] : '';
-        return modelNum && gbNum ? `${modelNum}-${gbNum}` : modelNum;
-      }
+  const parts = product.split(' ');
+  const modelNum = parts[0]?.toLowerCase() || '';
+  const isPro = parts[1]?.toLowerCase() === 'pro';
+  const color = isPro ? parts[3]?.toLowerCase() : parts[2]?.toLowerCase();
+  const suffix = isPro ? '-pro' : '';
+  return modelNum && color ? `${modelNum}-${color}${suffix}` : modelNum;
+}
+
 
 
       function populateFilters(rows) {
@@ -228,7 +230,7 @@
         const model = extractModel(product);
 
         // 2) Definir imgSrc **antes** de usarlo
-        const imgSrc = `images/images/phone/iphone-${model}.jpg`;
+        const imgSrc = `images/images/iphone/${model}.png`;
 
         // (Opcional: si quieres usar la URL que viene en el CSV, podrías hacer:
         // const imgSrc = photoUrl || `images/images/phone/iphone-${model}.jpg`; )
@@ -341,6 +343,9 @@
         });
       }
 
+
+
+      
       function renderPage(rows) {
         container.innerHTML = '';
         const start = (currentPage - 1) * ITEMS_PER_PAGE;

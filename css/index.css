@@ -86,6 +86,7 @@ body > div:nth-child(1){
         margin-bottom: -20px;
 }
 .card-text {
+  min-height: 80px;
     max-height: 150px;        /* Altura fija */
     overflow-y: auto;        /* Scroll vertical si supera la altura */
     position: relative;
