@@ -109,26 +109,28 @@
 
 
   <!-- Modal para reproducir vídeo -->
-  <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-      <div class="modal-content bg-dark">
-        <div class="modal-header border-0">
-          <h5 class="modal-title text-white" id="videoModalLabel"></h5>
-          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Cerrar">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body p-0">
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" id="videoFrame" src="" allow="autoplay; encrypted-media; fullscreen" allowfullscreen="true">
-</iframe>
-
-          </div>
+<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content bg-dark">
+      <div class="modal-header border-0">
+        <h5 class="modal-title text-white" id="videoModalLabel"></h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" id="videoFrame" src="" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+            allowfullscreen>
+          </iframe>
         </div>
       </div>
     </div>
   </div>
+</div>
+
 
 
   <!-- Scripts -->
@@ -393,26 +395,24 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
   <script>
     $(document).ready(function () {
-      // Cuando clickean en “Ver video”:
-      $('body').on('click', '.btn-view-video', function () {
-        const url = $(this).data('video-url');
-        const match = url.match(/\/d\/([^\/]+)\//);
-        if (!match) return alert('URL de Drive inválida');
-        const fileId = match[1];
-        // Usamos /preview para evitar aviso de virus
-        const embedUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+  $('body').on('click', '.btn-view-video', function () {
+    const url = $(this).data('video-url');
+    const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&]+)/);
+    if (!match) return alert('URL de YouTube inválida');
 
-        // Cargamos el iframe y abrimos modal
-        $('#videoFrame').attr('src', embedUrl);
-        $('#videoModalLabel').text('Vídeo');
-        $('#videoModal').modal('show');
-      });
+    const videoId = match[1];
+    const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
 
-      // Al cerrar el modal, limpiamos el src para detener la reproducción
-      $('#videoModal').on('hidden.bs.modal', function () {
-        $('#videoFrame').attr('src', '');
-      });
-    });
+    $('#videoFrame').attr('src', embedUrl);
+    $('#videoModalLabel').text('Vídeo');
+    $('#videoModal').modal('show');
+  });
+
+  $('#videoModal').on('hidden.bs.modal', function () {
+    $('#videoFrame').attr('src', '');
+  });
+});
+
   </script>
 </body>
 
