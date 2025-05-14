@@ -108,28 +108,56 @@
   </nav>
 
 
- <!-- Modal para reproducir vídeo -->
+<style>
+  /* Estilo responsivo para el modal */
+  #videoModal .modal-dialog {
+    max-width: 90vw;
+    width: 100%;
+    margin: auto;
+  }
+
+  #videoModal .modal-content {
+    background-color: #000;
+    border: none;
+    border-radius: 0;
+  }
+
+  #videoModal .modal-body {
+    padding: 0;
+  }
+
+  #videoFrame {
+    width: 100%;
+    height: 70vh; /* Ocupa 70% de la altura visible */
+    border: none;
+  }
+
+  @media (max-width: 768px) {
+    #videoFrame {
+      height: 50vh; /* Más chico en celulares */
+    }
+  }
+</style>
+
+<!-- Modal para reproducir vídeo -->
 <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel"
   aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content bg-dark">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
       <div class="modal-header border-0">
         <h5 class="modal-title text-white" id="videoModalLabel">Vídeo</h5>
         <button type="button" class="close text-white" data-dismiss="modal" aria-label="Cerrar">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body p-0">
-        <div class="embed-responsive embed-responsive-16by9">
-          <iframe class="embed-responsive-item" id="videoFrame" src=""
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-            allowfullscreen></iframe>
-        </div>
+      <div class="modal-body">
+        <iframe id="videoFrame" src=""
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+          allowfullscreen></iframe>
       </div>
     </div>
   </div>
 </div>
-
 
 
   <!-- Scripts -->
