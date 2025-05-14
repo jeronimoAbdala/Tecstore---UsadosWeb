@@ -57,8 +57,8 @@
                 </div>
                 <div class="col-auto">
                   <select id="filter-status" class="form-control">
-                    <option value="">Semi-Nuevos </option>
-                  </select>
+                      <!-- El JS agregará aquí "Semi-Nuevos" y otros valores -->
+                    </select>
                 </div>
                 <div class="col-auto">
                   <select id="filter-location" class="form-control">
@@ -602,7 +602,7 @@ body > div:nth-child(1) > nav > button{
 
         // Limpiar filtros previos (IMPORTANTE)
         modelFilterEl.innerHTML = '<option value="">Todos los modelos</option>';
-        statusFilterEl.innerHTML = '<option value="">Semi-Nuevos</option>';
+        statusFilterEl.innerHTML = '';
         locationFilterEl.innerHTML = '<option value="">Todas las ubicaciones</option>';
 
         models.sort().forEach(m => {
