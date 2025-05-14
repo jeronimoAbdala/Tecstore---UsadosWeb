@@ -689,7 +689,7 @@ body > div:nth-child(1) > nav > button{
 
 
 
-      function createPhoneCard([imei, product, details, price, videoUrl, photoUrl, location, status]) {
+      function createPhoneCard([imei, product, details, price, videoUrl, photoUrl, location, status, todos, priceArg]) {
         // 1) Extraer modelo para el nombre de la imagen
         const model = extractModel(product);
 
@@ -713,6 +713,7 @@ body > div:nth-child(1) > nav > button{
         <h5 class="card-title">${product}</h5>
         <p class="card-text">${details || '—'}</p>
         <h5>${price} USD</h5>
+        <h5>${priceArg} ARS</h5>
       </div>
       <div class="card-footer d-flex justify-content-between p-2">
         <p>📍 ${location}</p>
