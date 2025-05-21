@@ -687,14 +687,25 @@ body > div:nth-child(1) > nav > button{
         );
       }
 
+     
+
+
 
 
       function createPhoneCard([imei, product, details, price, videoUrl, photoUrl, location, status, todos, priceArg]) {
         // 1) Extraer modelo para el nombre de la imagen
         const model = extractModel(product);
 
-        // 2) Definir imgSrc **antes** de usarlo
-        const imgSrc = `images/images/iphone/${model}.png`;
+        let imgSrc = 'images/images/undefined.png';
+        if (photoUrl != '') {
+          imgSrc = photoUrl;
+        }
+
+
+
+   
+
+
 
         // (Opcional: si quieres usar la URL que viene en el CSV, podrías hacer:
         // const imgSrc = photoUrl || `images/images/phone/iphone-${model}.jpg`; )
@@ -708,7 +719,8 @@ body > div:nth-child(1) > nav > button{
         // 4) Ahora uso imgSrc sin problemas
         return `
      <div class="card card m-2 shadow-sm" style="width: 18rem;">
-      <img src="${imgSrc}" class="card-img-top" alt="${product}">
+      <img src="${imgSrc}" class="card-img-top" alt="${product}" onerror="this.onerror=null;this.src='images/images/undefined.png';">
+
       <div class="card-body">
         <h5 class="card-title">${product}</h5>
         <p class="card-text">${details || '—'}</p>
