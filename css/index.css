@@ -1,0 +1,23 @@
+.logo-img {
+  height: 60px;
+  width: auto;
+  max-width: 120px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 6px 12px;
+  object-fit: contain;
+  transition: box-shadow 0.2s;
+}
+ body > div:nth-child(1) > nav > div.logo-container.d-flex.flex-row.align-items-center > a > img{
+        width: 80px !important;
+      }
+
+.logo-img:hover {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.16);
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
